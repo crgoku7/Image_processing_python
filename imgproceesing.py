@@ -18,6 +18,20 @@ class ImageProcess:
             for j in range(self.img_w):
                 self.grey_data[i][j] = (0.3*self.img_data[i][j][0]+0.59*self.img_data[i][j][1]+0.11*self.img_data[i][j][2])
     
+    def Blue_gaussian(self, kernel_size):
+        if(kernel_size%2==0):
+            kernel_size +=1
+        kernel = np.ones((kernel_size, kernel_size))
+        sum_v = 0
+        for i in range(kernel_size):
+            for j in range(kernel_size):
+                val = 1#abs(i-blur_size/2) + abs(j-blur_size/2)
+                kernel[i][j] = 1/pow(2,val)
+                sum_v+= kernel[i][j]
+        print(kernel)
+
+
+    
 
 while(True):#input("SCAN IMAGE(Y/N?)")=="Y"
     #file_name = input("ENTER IMAGE PATH:")
@@ -25,11 +39,12 @@ while(True):#input("SCAN IMAGE(Y/N?)")=="Y"
     img = Image.open(file_name)
     img_matrix = np.array(img)
     image = ImageProcess(img_matrix)
-    image.GS_lightness()
+    image.GS_average()
     grey = Image.fromarray(image.grey_data)
-    if grey.mode != 'RGB':
+    image.Blue_gaussian(3)
+    """if grey.mode != 'RGB':
         grey  = grey.convert("RGB")
     grey.save("image.bmp")
-    break
+    break"""
         
 
