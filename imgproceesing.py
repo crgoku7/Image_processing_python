@@ -25,7 +25,7 @@ class ImageProcess:
         sum_v = 0
         for i in range(kernel_size):
             for j in range(kernel_size):
-                val = abs(i-blur_size/2) + abs(j-blur_size/2)
+                val = abs(i-kernel_size/2) + abs(j-kernel_size/2)
                 kernel[i][j] = 1/pow(2,val)
                 sum_v+= kernel[i][j]
         print(kernel)
