@@ -25,7 +25,7 @@ class ImageProcess:
         sum_v = 0
         for i in range(kernel_size):
             for j in range(kernel_size):
-                val = 1#abs(i-blur_size/2) + abs(j-blur_size/2)
+                val = abs(i-blur_size/2) + abs(j-blur_size/2)
                 kernel[i][j] = 1/pow(2,val)
                 sum_v+= kernel[i][j]
         print(kernel)
@@ -36,12 +36,14 @@ class ImageProcess:
 while(True):#input("SCAN IMAGE(Y/N?)")=="Y"
     #file_name = input("ENTER IMAGE PATH:")
     file_name = "tiger.bmp"
+    print("Starting")
     img = Image.open(file_name)
     img_matrix = np.array(img)
     image = ImageProcess(img_matrix)
-    image.GS_average()
-    grey = Image.fromarray(image.grey_data)
+    #image.GS_average()
+    #grey = Image.fromarray(image.grey_data)
     image.Blue_gaussian(3)
+    inp = input("Again?")
     """if grey.mode != 'RGB':
         grey  = grey.convert("RGB")
     grey.save("image.bmp")
