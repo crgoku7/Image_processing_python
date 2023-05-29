@@ -37,13 +37,14 @@ while(True):#input("SCAN IMAGE(Y/N?)")=="Y"
     #file_name = input("ENTER IMAGE PATH:")
     file_name = "tiger.bmp"
     print("Starting")
+    inp = 3
     img = Image.open(file_name)
     img_matrix = np.array(img)
     image = ImageProcess(img_matrix)
     #image.GS_average()
     #grey = Image.fromarray(image.grey_data)
-    image.Blue_gaussian(3)
-    inp = input("Again?")
+    image.Blue_gaussian(inp)
+    inp = int(input("Again?"))
     """if grey.mode != 'RGB':
         grey  = grey.convert("RGB")
     grey.save("image.bmp")
